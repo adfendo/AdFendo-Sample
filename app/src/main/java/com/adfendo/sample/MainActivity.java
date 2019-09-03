@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         showAdButton = findViewById(R.id.showInterstitialButton);
 
         // Initialize the AdFendo SDK.
-        // Always test ads with sample App ID and sample Ad unit ID
+        // Always test ads with sample AppID and sample Ad unit ID
         // Sample App ID : "test-app-146514415"
         AdFendo.initialize("YOUR_APP_ID_HERE");
 
