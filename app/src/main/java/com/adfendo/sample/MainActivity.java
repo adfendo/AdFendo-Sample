@@ -12,7 +12,7 @@ import com.adfendo.sdk.interfaces.InterstitialAdListener;
 
 public class MainActivity extends AppCompatActivity {
     private Button showAdButton;
-    private AdFendoInterstitialAd adFendoInterstitialAd;
+    private AdFendoInterstitialAd mAdFendoInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,30 +21,30 @@ public class MainActivity extends AppCompatActivity {
         // Initialize a button to display interstitial ad
         showAdButton = findViewById(R.id.showInterstitialButton);
 
-        // Initialize the AdFendo SDK.
+        // Initialize AdFendo SDK.
         // Always test ads with sample AppID and sample Ad unit ID
         // Sample App ID : "test-app-146514415"
         AdFendo.initialize("YOUR_APP_ID_HERE");
 
         // Initialize Adfendo Interstitial ad
         // Interstitial sample ad unit id: "test-ad-unit-id-146514415~9142051414"
-        adFendoInterstitialAd = new AdFendoInterstitialAd(this, "YOUR_INTERSTITIAL_AD_UNIT_ID_HERE");
+        mAdFendoInterstitialAd = new AdFendoInterstitialAd(this, "YOUR_INTERSTITIAL_AD_UNIT_ID_HERE");
         // Make an ad request
-        adFendoInterstitialAd.requestAd();
+        mAdFendoInterstitialAd.requestAd();
         // show ad
         showAdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (adFendoInterstitialAd.isLoaded()){
-                    adFendoInterstitialAd.showAd();
+                if (mAdFendoInterstitialAd.isLoaded()){
+                    mAdFendoInterstitialAd.showAd();
                 }else {
-                    adFendoInterstitialAd.requestAd();
+                    mAdFendoInterstitialAd.requestAd();
                 }
             }
         });
 
         // Customize as your need
-        adFendoInterstitialAd.setInterstitialAdListener(new InterstitialAdListener() {
+        mAdFendoInterstitialAd.setInterstitialAdListener(new InterstitialAdListener() {
             @Override
             public void onClosed() {
                 // Code to be executed when an ad closed.
