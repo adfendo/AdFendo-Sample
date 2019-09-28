@@ -10,9 +10,11 @@ import com.adfendo.sdk.ads.AdFendo;
 import com.adfendo.sdk.ads.AdFendoInterstitialAd;
 import com.adfendo.sdk.interfaces.InterstitialAdListener;
 
+
 public class MainActivity extends AppCompatActivity {
     private Button showAdButton;
     private AdFendoInterstitialAd mAdFendoInterstitialAd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,47 +26,38 @@ public class MainActivity extends AppCompatActivity {
         // Initialize AdFendo SDK.
         // Always test ads with sample AppID and sample Ad unit ID
         // Sample App ID : "test-app-146514415"
-        AdFendo.initialize("YOUR_APP_ID_HERE");
-
-        // Initialize Adfendo Interstitial ad
-        // Interstitial sample ad unit id: "test-ad-unit-id-146514415~9142051414"
-        mAdFendoInterstitialAd = new AdFendoInterstitialAd(this, "YOUR_INTERSTITIAL_AD_UNIT_ID_HERE");
-        // Make an ad request
+        AdFendo.initialize("test-app-146514415");
+        mAdFendoInterstitialAd = new AdFendoInterstitialAd(this, "test-ad-unit-id-146514415~9142051414");
         mAdFendoInterstitialAd.requestAd();
-        // show ad
-        showAdButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mAdFendoInterstitialAd.isLoaded()){
-                    mAdFendoInterstitialAd.showAd();
-                }else {
-                    mAdFendoInterstitialAd.requestAd();
-                }
-            }
-        });
-
-        // Customize as your need
         mAdFendoInterstitialAd.setInterstitialAdListener(new InterstitialAdListener() {
             @Override
             public void onClosed() {
-                // Code to be executed when an ad closed.
+                mAdFendoInterstitialAd.requestAd();
             }
 
             @Override
             public void onFailedToLoad(int errorCode) {
-                // Code to be executed when an ad request fails.
+
             }
 
             @Override
             public void isLoaded(boolean isLoaded) {
-                // Code to be executed when an ad finishes loading.
+                
             }
 
             @Override
             public void onImpression() {
-                // Code to be executed when the ad is shown.
+
             }
         });
 
     }
+
+    public void showAd(View view) {
+        if(mAdFendoInterstitialAd.isLoaded())
+            mAdFendoInterstitialAd.showAd();
+        else
+            mAdFendoInterstitialAd.requestAd();
+    }
 }
+

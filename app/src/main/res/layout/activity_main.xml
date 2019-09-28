@@ -22,5 +22,6 @@
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:background="@color/amber"
-        android:padding="8dp" />
+        android:padding="8dp"
+        android:onClick="showAd"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
