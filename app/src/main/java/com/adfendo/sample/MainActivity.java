@@ -45,22 +45,23 @@ public class MainActivity extends AppCompatActivity {
         mAdFendoInterstitialAd.setInterstitialAdListener(new InterstitialAdListener() {
             @Override
             public void onClosed() {
+                // code to be executed when an ad closed
                 mAdFendoInterstitialAd.requestAd();
             }
 
             @Override
             public void onFailedToLoad(int errorCode) {
-
+                // code to be executed when an ad failed to load
             }
 
             @Override
             public void isLoaded(boolean isLoaded) {
-
+                // code to be executed when an ad is loaded
             }
 
             @Override
             public void onImpression() {
-
+                // code to be executed on a successful impression
             }
         });
 
@@ -71,27 +72,26 @@ public class MainActivity extends AppCompatActivity {
         bannerAd.setOnBannerAdListener(new BannerAdListener() {
             @Override
             public void onRequest(boolean isSuccessful) {
-                //code to be executes when ad is requested
+                // code to be executed when a request done
             }
 
             @Override
             public void onClosed() {
-                //code to be executed when ad is closed
+                // code to be executed when an ad closed
             }
 
             @Override
             public void onFailedToLoad(int errorCode) {
-                //code to be executed when ad is failed to load, returns an error code
+                // code to be executed when an ad failed to load            }
             }
-
             @Override
             public void isLoaded(boolean isLoaded) {
-                //code to be executed when an ad is loaded or not
+                // code to be executed when an ad is loaded
             }
 
             @Override
             public void onImpression() {
-                // code to be executed when an ad is shown
+                // code to be executed on a successful impression
             }
         });
 
